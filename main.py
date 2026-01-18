@@ -292,7 +292,7 @@ def main():
 
                     # Quick save
                     if event.key == pygame.K_F5:
-                        SaveSystem.save_game(engine, camcorder, slot=1)
+                        SaveSystem.save_game(engine, camcorder=camcorder, slot=1)
                         save_message = "Game saved to slot 1!"
                         save_message_timer = 3.0
 
