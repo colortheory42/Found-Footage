@@ -25,7 +25,7 @@ class SaveSystem:
         return os.path.join(SAVE_DIR, f"save_slot_{slot}.json")
 
     @staticmethod
-    def save_game(engine, slot=1):
+    def save_game(engine, camcorder=None, slot=1):
         """Save game state to JSON file."""
         save_data = {
             'version': '1.0',
@@ -46,6 +46,10 @@ class SaveSystem:
                 'play_time': engine.play_time
             }
         }
+        
+        # Add camcorder state if provided
+        if camcorder:
+            save_data['camcorder'] = camcorder.get_state_for_save()
 
         save_path = SaveSystem.get_save_path(slot)
         with open(save_path, 'w') as f:
